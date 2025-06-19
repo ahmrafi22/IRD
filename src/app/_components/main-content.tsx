@@ -2,10 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  AiOutlineSearch,
-  AiOutlineClose,
-} from "react-icons/ai";
+import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import { FaPlay } from "react-icons/fa";
 import Image from "next/image";
 
@@ -58,7 +55,7 @@ export default function MainContentWithCategories({
   const handleCategoryClick = async (catId: number) => {
     const newExpandedCat = expandedCat === catId ? null : catId;
     setExpandedCat(newExpandedCat);
-    setSelectedSubcatId(null); 
+    setSelectedSubcatId(null);
 
     if (newExpandedCat === null) {
       setSubcategories([]);
@@ -191,14 +188,12 @@ export default function MainContentWithCategories({
                           handleSubcategoryClick(cat.cat_id, sub.subcat_id)
                         }
                       >
-
                         {subcategories.length > 1 && (
                           <div
                             className="w-2 h-2 bg-[#1fa45b] rounded-full mr-3 relative z-10 flex-shrink-0"
                             style={{ marginLeft: "-3px" }}
                           ></div>
                         )}
-
 
                         <span
                           className={subcategories.length === 1 ? "ml-4" : ""}
@@ -314,15 +309,14 @@ export default function MainContentWithCategories({
                         </span>
                       </div>
                     )}
-
                     {dua.translation_en && (
                       <div className="mb-[10px]">
-                        <div className="text-[#393939] font-inter font-medium mb-[10px] text-base leading-[25px]">
-                          Translation:
-                        </div>
-                        <p className="text-[#393939] font-inter text-base leading-[24px] whitespace-pre-wrap">
-                          {dua.translation_en}
+                        <p className="text-[#393939] font-inter font-medium text-base leading-[25px] inline">
+                          Translation:{" "}
                         </p>
+                        <span className="text-[#393939] font-inter text-base leading-[24px] whitespace-pre-wrap">
+                          {dua.translation_en}
+                        </span>
                       </div>
                     )}
 
@@ -343,47 +337,47 @@ export default function MainContentWithCategories({
                       </button>
 
                       <div className="flex items-center space-x-2">
-                        <button 
+                        <button
                           className="p-2 hover:bg-gray-100 rounded transition-colors"
                           onClick={() => handleCopyDua(dua.dua_arabic)}
                         >
-                          <Image 
-                            src="/svgs/copy.svg" 
-                            alt="Copy" 
-                            width={16} 
-                            height={16} 
+                          <Image
+                            src="/svgs/copy.svg"
+                            alt="Copy"
+                            width={16}
+                            height={16}
                           />
                         </button>
                         <button className="p-2 hover:bg-gray-100 rounded transition-colors">
-                          <Image 
-                            src="/svgs/save.svg" 
-                            alt="Save" 
-                            width={16} 
-                            height={16} 
+                          <Image
+                            src="/svgs/save.svg"
+                            alt="Save"
+                            width={16}
+                            height={16}
                           />
                         </button>
                         <button className="p-2 hover:bg-gray-100 rounded transition-colors">
-                          <Image 
-                            src="/svgs/light.svg" 
-                            alt="Light" 
-                            width={19} 
-                            height={19} 
+                          <Image
+                            src="/svgs/light.svg"
+                            alt="Light"
+                            width={19}
+                            height={19}
                           />
                         </button>
                         <button className="p-2 hover:bg-gray-100 rounded transition-colors">
-                          <Image 
-                            src="/svgs/share.svg" 
-                            alt="Share" 
-                            width={17} 
-                            height={17} 
+                          <Image
+                            src="/svgs/share.svg"
+                            alt="Share"
+                            width={17}
+                            height={17}
                           />
                         </button>
                         <button className="p-2 hover:bg-gray-100 rounded transition-colors">
-                          <Image 
-                            src="/svgs/info.svg" 
-                            alt="Info" 
-                            width={19} 
-                            height={19} 
+                          <Image
+                            src="/svgs/info.svg"
+                            alt="Info"
+                            width={19}
+                            height={19}
                           />
                         </button>
                       </div>

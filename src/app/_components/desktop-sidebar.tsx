@@ -7,7 +7,7 @@ export function DesktopSidebar() {
   const navItems = [
     { href: "#", icon: "/svgs/home.svg", alt: "Home" },
     { href: "#", icon: "/svgs/tabs.svg", alt: "Tabs" },
-    { href: "#", icon: "/svgs/light.svg", alt: "Light" },
+    { href: "#", icon: "/svgs/lighside.svg", alt: "Light" },
     { href: "#", icon: "/svgs/save bar.svg", alt: "Save" },
     { href: "#", icon: "/svgs/med.svg", alt: "Medical" },
     { href: "#", icon: "/svgs/chat.svg", alt: "Chat" },
