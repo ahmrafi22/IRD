@@ -136,25 +136,26 @@ export default function MainContentWithCategories({
                   <Image
                     width={50}
                     height={50}
+                    className="md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12"
                     src={getCategorySvgPath(index)}
                     alt={cat.cat_name_en}
                   />
                 </div>
                 <div className="flex-1">
-                  <div className="font-inter font-semibold text-base leading-none text-[#1fa45b]">
+                  <div className="font-inter font-semibold text-sm md:text-xs lg:text-sm xl:text-base leading-none text-[#1fa45b]">
                     {cat.cat_name_en}
                   </div>
-                  <div className="font-poppins font-normal text-sm leading-none text-[#7e7e7e] mt-1">
+                  <div className="font-poppins font-normal text-xs md:text-[10px] lg:text-xs xl:text-sm leading-none text-[#7e7e7e] mt-1">
                     Subcategory: {cat.no_of_subcat}
                   </div>
                 </div>
                 <div className="text-right flex items-center">
                   <div className="w-0.5 h-8 bg-gray-300 mr-2 rounded-full"></div>
                   <div>
-                    <div className="font-inter font-semibold text-base leading-none text-[#393939]">
+                    <div className="font-inter font-semibold text-sm md:text-xs lg:text-sm xl:text-base leading-none text-[#393939]">
                       {cat.no_of_dua}
                     </div>
-                    <div className="font-poppins font-normal text-sm leading-none text-[#7e7e7e] mt-1">
+                    <div className="font-poppins font-normal text-xs md:text-[10px] lg:text-xs xl:text-sm leading-none text-[#7e7e7e] mt-1">
                       Duas
                     </div>
                   </div>
@@ -179,7 +180,7 @@ export default function MainContentWithCategories({
                     {subcategories.map((sub) => (
                       <div
                         key={sub.subcat_id}
-                        className={`flex items-center relative cursor-pointer transition-colors duration-200 font-inter font-medium text-base leading-[25px] ${
+                        className={`flex items-center relative cursor-pointer transition-colors duration-200 font-inter font-medium text-sm md:text-xs lg:text-sm xl:text-base leading-[25px] ${
                           selectedSubcatId === sub.subcat_id
                             ? "text-[#1fa45b]"
                             : "text-[#373737] hover:text-[#1fa45b]"
@@ -215,31 +216,30 @@ export default function MainContentWithCategories({
   return (
     <div className="flex-1 flex ">
       {/* category sidebar */}
-      <div className="hidden md:flex w-1/4 bg-white border-r border-[#e2e2e2] flex-col overflow-hidden fixed left-27 mt-1.5 top-22 h-screen z-40 ">
-        <div className="bg-[#1fa45b] text-white p-4 text-center font-medium  ">
+      <div className="hidden md:flex w-1/4 bg-white border-r border-[#e2e2e2] flex-col overflow-hidden fixed left-27  top-21 h-screen z-40 ">
+        <div className="bg-[#1fa45b] text-white p-4 text-center font-medium text-sm md:text-xs lg:text-sm xl:text-base">
           Categories
         </div>
         <CategoryContent />
       </div>
 
-      {/* Mobile category panel */}
+      {/* Mobile category  */}
       <div
         className={`fixed inset-y-0 left-0 z-50 w-80 bg-white border-r border-[#e2e2e2] transform transition-transform duration-300 ease-in-out ${
           categoriesOpen ? "translate-x-0" : "-translate-x-full"
-        } md:hidden overflow-hidden flex flex-col h-screen rounded-2xl`}
+        } md:hidden overflow-hidden flex flex-col h-screen `}
       >
-        <div className="bg-[#1fa45b] text-white p-4 flex items-center justify-between flex-shrink-0 rounded-t-2xl">
-          <span className="font-medium">Categories</span>
-          <div className="flex items-center space-x-3">
+        <div className="bg-[#1fa45b] text-white p-4 flex items-center justify-between flex-shrink-0 ">
             <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-              <svg
-                className="w-4 h-4 text-white"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" />
-              </svg>
+            <Image
+              src="/logo.png" 
+              width={50} 
+              height={50}
+              alt="App Icon"
+              />
             </div>
+          <span className="font-medium text-sm">Categories</span>
+          <div className="flex items-center space-x-3">
             <button
               className="w-8 h-8 p-0 text-white hover:bg-white/20 rounded flex items-center justify-center transition-colors"
               onClick={onCategoriesClose}

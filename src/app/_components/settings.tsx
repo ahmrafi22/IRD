@@ -45,7 +45,7 @@ export function SettingsPanel({ isOpen, onClose, isMobile = false }: SettingsPan
           return (
             <div
               key={item.id}
-              className={`relative flex items-center space-x-3 p-3 rounded-2xl cursor-pointer transition-colors duration-200 ${
+              className={`relative flex items-center space-x-3 p-3 rounded-2xl cursor-pointer transition-colors duration-200 font-inter ${
                 isActive ? "bg-[#f0f9f4] text-[#1fa45b]" : "text-[#393939] hover:bg-[#f5f5f5]"
               }`}
               onClick={() => setActiveItem(item.id)}
@@ -70,7 +70,7 @@ export function SettingsPanel({ isOpen, onClose, isMobile = false }: SettingsPan
 
         <div className="pt-4 mt-6">
           <div className="flex items-center justify-between p-3 rounded-2xl hover:bg-[#f5f5f5] transition-colors duration-200">
-            <span className="text-[#393939] font-medium">Night Mode</span>
+            <span className="text-[#393939] font-medium font-inter">Night Mode</span>
             <label className="relative inline-flex items-center cursor-pointer">
               <input
                 type="checkbox"
@@ -112,7 +112,7 @@ export function SettingsPanel({ isOpen, onClose, isMobile = false }: SettingsPan
 
   // Desktop 
   return (
-    <div className="hidden xl:flex xl:fixed xl:right-0  bg-white border  h-screen border-[#e2e2e2] flex-col overflow-hidden" style={{ width: '330px' }}>
+    <div className="hidden xl:flex xl:fixed xl:right-0 mt-1  bg-white border  h-screen border-[#e2e2e2] flex-col overflow-hidden" style={{ width: '330px' }}>
         <h2 className="text-xl mt-6 text-center font-semibold text-[#393939]">Settings</h2>
       
       <div className="flex-1 overflow-y-auto px-6 py-6">

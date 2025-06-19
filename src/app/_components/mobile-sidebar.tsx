@@ -6,7 +6,7 @@ import Link from "next/link";
 const navItems = [
   { href: "#", icon: "/svgs/home.svg", alt: "Home" },
   { href: "#", icon: "/svgs/tabs.svg", alt: "Tabs" },
-  { href: "#", icon: "/svgs/light.svg", alt: "Light" },
+  { href: "#", icon: "/svgs/lighside.svg", alt: "Light" },
   { href: "#", icon: "/svgs/chat.svg", alt: "Chat" },
   { href: "#", icon: "/svgs/book.svg", alt: "Book" },
 ];
