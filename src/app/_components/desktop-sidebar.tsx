@@ -22,10 +22,10 @@ export function DesktopSidebar() {
       </div>
 
       {/* Navigation icons*/}
-      <div className="flex flex-col items-center justify-center flex-1 gap-[27px]">
+      <div className="flex flex-col items-center justify-center  gap-[27px]">
         {navItems.map((item, index) => (
           <Link key={index} href={item.href} passHref>
-            <div className="rounded-full bg-[#e8f0f5] flex items-center justify-center group cursor-pointer">
+            <div className="rounded-full cursor-pointer">
               <Image
                 src={item.icon}
                 alt={item.alt}

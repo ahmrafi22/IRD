@@ -11,7 +11,7 @@ interface HeaderProps {
 
 export function Header({ onCategoriesOpen, onSettingsOpen }: HeaderProps) {
   return (
-    <div className="sticky top-0 z-50 bg-white border-b mb-2 border-[#e2e2e2] px-3 py-2 flex items-center justify-between h-[70px]">
+    <div className="sticky top-0 z-10 bg-white border-b mb-2 border-[#e2e2e2] px-3 py-2 flex items-center justify-between h-[70px]">
       <div className="flex items-center space-x-3">
         {/* Hamburger Menu */}
         <button

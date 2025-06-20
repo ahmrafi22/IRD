@@ -38,19 +38,10 @@ export default function MainContentWithCategories({
         ]);
 
         setSubcategories(subcatRes.data);
-        setDuas(dedupeById(duaRes.data));
+        setDuas(duaRes.data);
       }
     });
   }, []);
-
-  const dedupeById = (duas: Dua[]): Dua[] => {
-    const seen = new Set();
-    return duas.filter((d) => {
-      if (seen.has(d.dua_id)) return false;
-      seen.add(d.dua_id);
-      return true;
-    });
-  };
 
   const handleCategoryClick = async (catId: number) => {
     const newExpandedCat = expandedCat === catId ? null : catId;
@@ -67,7 +58,7 @@ export default function MainContentWithCategories({
       ]);
 
       setSubcategories(subcatRes.data);
-      setDuas(dedupeById(duaRes.data));
+      setDuas(duaRes.data);
     }
   };
 
@@ -76,7 +67,7 @@ export default function MainContentWithCategories({
     const duaRes = await axios.get("/api/duas", {
       params: { cat_id: catId, subcat_id: subcatId },
     });
-    setDuas(dedupeById(duaRes.data));
+    setDuas(duaRes.data);
   };
 
   const handleCopyDua = async (duaArabic: string) => {
@@ -109,7 +100,7 @@ export default function MainContentWithCategories({
   };
 
   const CategoryContent = () => (
-    <div className="flex flex-col flex-1 overflow-hidden">
+    <div className="flex flex-col h-full">
       <div className="p-4 flex-shrink-0">
         <div className="relative">
           <AiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#7e7e7e] w-4 h-4" />
@@ -120,7 +111,7 @@ export default function MainContentWithCategories({
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 green-scrollbar">
+      <div className="overflow-y-auto p-4 green-scrollbar pb-15">
         {categories.map((cat, index) => (
           <div key={cat.cat_id} className="mb-4">
             <div
@@ -214,46 +205,43 @@ export default function MainContentWithCategories({
   );
 
   return (
-    <div className="flex-1 flex ">
-      {/* category sidebar */}
-      <div className="hidden md:flex w-1/4 bg-white border-r border-[#e2e2e2] flex-col overflow-hidden fixed left-27  top-21 h-screen z-40 ">
+    <div className="flex-1 flex">
+      {/* Desktop category sidebar */}
+      <div className="hidden md:flex w-1/4 bg-white border-r border-[#e2e2e2] flex-col fixed left-27 top-21 bottom-0 z-40">
         <div className="bg-[#1fa45b] text-white p-4 text-center font-medium text-sm md:text-xs lg:text-sm xl:text-base">
           Categories
         </div>
         <CategoryContent />
       </div>
 
-      {/* Mobile category  */}
+      {/* Mobile category overlay */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-80 bg-white border-r border-[#e2e2e2] transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out ${
           categoriesOpen ? "translate-x-0" : "-translate-x-full"
-        } md:hidden overflow-hidden flex flex-col h-screen `}
+        } md:hidden`}
       >
-        <div className="bg-[#1fa45b] text-white p-4 flex items-center justify-between flex-shrink-0 ">
+        <div className="w-80 bg-white border-r border-[#e2e2e2] h-full flex flex-col">
+          <div className="bg-[#1fa45b] text-white p-4 flex items-center justify-between flex-shrink-0">
             <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-            <Image
-              src="/logo.png" 
-              width={50} 
-              height={50}
-              alt="App Icon"
-              />
+              <Image src="/logo.png" width={50} height={50} alt="App Icon" />
             </div>
-          <span className="font-medium text-sm">Categories</span>
-          <div className="flex items-center space-x-3">
-            <button
-              className="w-8 h-8 p-0 text-white hover:bg-white/20 rounded flex items-center justify-center transition-colors"
-              onClick={onCategoriesClose}
-            >
-              <AiOutlineClose className="w-4 h-4" />
-            </button>
+            <span className="font-medium text-sm">Categories</span>
+            <div className="flex items-center space-x-3">
+              <button
+                className="w-8 h-8 p-0 text-white hover:bg-white/20 rounded flex items-center justify-center transition-colors"
+                onClick={onCategoriesClose}
+              >
+                <AiOutlineClose className="w-4 h-4" />
+              </button>
+            </div>
           </div>
+          <CategoryContent />
         </div>
-        <CategoryContent />
       </div>
 
       {/* Dua content */}
-      <div className="flex-1 overflow-y-auto pb-20 -mt-5 md:pb-6">
-        <div className="md:ml-[27%] md:pl-[10px]">
+      <div className="flex-1 overflow-y-auto pb-20 md:pb-6">
+        <div className="md:ml-[27%] md:pl-4">
           <div className="p-4 md:p-6 xl:mr-[346px]">
             {Object.entries(groupedDuas).map(([subcatId, duaList]) => (
               <div key={subcatId} className="mb-[10px]">
@@ -265,9 +253,9 @@ export default function MainContentWithCategories({
                     )}
                   </h2>
                 </div>
-                {duaList.map((dua) => (
+                {duaList.map((dua, index) => (
                   <div
-                    key={dua.dua_id}
+                    key={`${dua.dua_id}-${index}`}
                     className="bg-white rounded-lg p-4 md:p-6 mb-[10px] border border-[#e2e2e2]"
                   >
                     <div className="flex items-center mb-[10px]">
